@@ -24,7 +24,7 @@ The event bus is THE base service of Eclipse SmartHome. All bundles that do not 
 There are mainly two types of events:
 
  - Commands, which trigger an action or a state change of some item.
- - State updates, which inform about a state change of some item (often as a response to a command)
+ - State updates, which inform about a state change of some item (often in response to a command)
 
 The following item types are currently available (alphabetical order):
 
