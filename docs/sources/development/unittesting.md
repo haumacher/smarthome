@@ -30,7 +30,7 @@ Each class inside the test folder, which has a public method with a `@Test` anno
     	}
 	}
 
-Using the the [https://code.google.com/p/hamcrest/ hamcrest] matcher library is a good way to write expressive assertions. In contrast to the original assertion statements from JUnit the hamcrest matcher library allows to define the assertion in a more natural order:
+Using the the [hamcrest](https://code.google.com/p/hamcrest/) matcher library is a good way to write expressive assertions. In contrast to the original assertion statements from JUnit the hamcrest matcher library allows to define the assertion in a more natural order:
 
 	PercentType pt = new PercentType("0.0001");
 	assertThat pt.toString(), is(equalTo("0.0001"))
