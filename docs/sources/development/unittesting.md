@@ -1,9 +1,8 @@
-Testing Eclipse SmartHome
-===
+# Testing Eclipse SmartHome
+
 There are two different kinds of approaches for testing Eclipse SmartHome. One is to use plain JUnit tests for testing simple classes. The other is to execute JUnit tests within the OSGi environment to test OSGi services and dynamic behaviour. Both approaches are supported through a simple infrastructure, which allows to easily write and execute tests.
 
-Test fragment
----
+## Test fragment
 
 In OSGi tests are implemented in a separate fragment bundle, which host is the bundle, that should be tested. The name of the test fragment bundle should be the same as the bundle to test with a ".test" suffix. The MANIFEST.MF file must contain a `Fragment-Host` entry. Fragment bundles inherit all imported packages from the host bundle. In addition the fragment bundle must import the `org.junit` package with a minimum version of 4.0.0 specified. The following code snippet shows a manifest file of the test fragment for the `org.eclipse.smarthome.core.library` bundle.
 
@@ -19,8 +18,7 @@ In OSGi tests are implemented in a separate fragment bundle, which host is the b
 
 Tests are typically placed inside the folder `src/test/java`. 
 
-Unit tests
----
+## Unit tests
 
 Each class inside the test folder, which has a public method with a `@Test` annotation will automatically be executed as a test. Inside the class one can refer to all classes from the host bundle and all imported classes. The following code snippet shows a simple JUnit test which tests the `toString` conversation of a PercentType.
 
@@ -43,14 +41,13 @@ To use the hamcrest library in your test project, you just have to add the follo
 
 Tests can be executed from Eclipse by right-clicking the test file and clicking on `Run As => JUnit Test`. From maven one can execute the test with `mvn test` command in the folder of the test fragment bundle.    
 
-Groovy
----
+## Groovy
 
 Using the JVM language Groovy tests are very easy and efficient to write. Groovy supports mocking without any frameworks. Language features like closures, type-inference and native syntax for maps and lists allow to implement short and easy to understand tests. Thus Eclipse SmartHome comes with a out-of-the-boc-support for Groovy-testing in Eclipse and maven. Each test file which is placed under `src/test/groovy` will be automatically compiled and executed in Eclipse and maven. Moreover the Eclipse SmartHome Yoxos profile contains the Groovy-Eclipse-Plugin.
 
-Even the following examples are presented in Groovy, unit and OSGi tests can also be implemented in Java. If the default mocking capabilities of Groovy do not fulfil the requirements, Groovy can also be combined with Java mocking frameworks like [https://code.google.com/p/mockito/ mockito]. 
+Even the following examples are presented in Groovy, unit and OSGi tests can also be implemented in Java. If the default mocking capabilities of Groovy do not fulfil the requirements, Groovy can also be combined with Java mocking frameworks like [mockito](https://code.google.com/p/mockito/). 
 
-== OSGi-Tests ==
+## OSGi-Tests
 
 Some components of Eclipse SmartHome are heavily bound to the OSGi runtime, because they use OSGi core services like the EventAdmin or the ConfigurationAdmin. That makes it hard to test those components outside of the OSGi container. Equinox provides a possibility to execute a JUnit tests inside the OSGi environment, where the test has access to OSGi services.
 
